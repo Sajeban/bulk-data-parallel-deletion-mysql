@@ -29,10 +29,10 @@ public class CustomerDeletionRunnable implements Runnable {
                 Statement statement = mySQLConnection.createStatement();
                 statement.execute("SET group_concat_max_len = 18446744073709547520; CALL delete_customer_by_chunks(" +
                         customerIdPeriod.startPointer() + "," + customerIdPeriod.endPointer() + "," + LIMIT + ");");
-                System.out.println("Not Applicable Rebate lines deletion completed for chunk " + customerIdPeriod.startPointer() + "-" + customerIdPeriod.endPointer());
+                System.out.println("deletion completed for chunk " + customerIdPeriod.startPointer() + "-" + customerIdPeriod.endPointer());
 
             } catch (Exception e) {
-                System.out.println("Not Applicable Rebate lines deletion failed for chunk " + customerIdPeriod.startPointer() + "-" + customerIdPeriod.endPointer());
+                System.out.println("deletion failed for chunk " + customerIdPeriod.startPointer() + "-" + customerIdPeriod.endPointer());
                 manipulationFailedQueue.add(customerIdPeriod);
             }
 
